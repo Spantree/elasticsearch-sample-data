@@ -14,4 +14,4 @@ echo "Creating snapshot as '${SNAPSHOT_NAME}'"
 
 # Will ack even if it already exists
 curl -X PUT -d '{"type": "s3", "settings": {"bucket": "elasticsearch-sample-data", "region": "us-east"}}' "http://localhost:9200/_snapshot/s3"
-curl -X PUT -d "{\"indices\": \"${INDEX_NAME}\", \"ignore_unavailable\": true, \"include_global_state\": false}" "http://localhost:9200/_snapshot/s3/${SNAPSHOT_NAME}?wait_for_completion=true"
+curl -X PUT -d "{\"indices\": \"${INDEX_NAME}\", \"ignore_unavailable\": false, \"include_global_state\": false}" "http://localhost:9200/_snapshot/s3/${SNAPSHOT_NAME}?wait_for_completion=true"
